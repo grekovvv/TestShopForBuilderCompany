@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraBars;
-using DevExpress.XtraGrid.Views.Base;
+﻿using DevExpress.Mvvm.Native;
 using DevExpress.XtraGrid.Views.Grid;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,31 +8,37 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestShopForBuilderCompany.Db;
 using TestShopForBuilderCompany.Model;
 
 namespace TestShopForBuilderCompany
 {
-    public partial class Form1 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
+    public partial class Products : Form
     {
         private ShopSQL dbContext;
-        public Form1()
+        public Products()
         {
             InitializeComponent();
             dbContext = new ShopSQL();
-            dbContext.Clients.Load();
-            gridControl1.DataSource = dbContext.Clients.Local.ToBindingList();
-            Load += Form1_Load;
+            Load += Products_Load;
             gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
             gridView1.InitNewRow += GridView1_InitNewRow;
+            LoadClients();
+        }
+        private void LoadClients()
+        {
+            dbContext.Products.Load();
+            gridControl1.DataSource = dbContext.Products.Local.ToBindingList();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Products_Load(object sender, EventArgs e)
         {
-            // Makes the ID column read-only. Users cannnot edit its values.
             gridView1.Columns["Id"].OptionsColumn.ReadOnly = true;
             gridView1.Columns["Id"].Visible = false;
+            gridView1.Columns["OrderDetails"].OptionsColumn.ReadOnly = true;
+            gridView1.Columns["OrderDetails"].Visible = false;
         }
         private void GridView1_InitNewRow(object sender, InitNewRowEventArgs e)
         {
@@ -45,6 +50,25 @@ namespace TestShopForBuilderCompany
         private void Save_Click(object sender, EventArgs e)
         {
             dbContext.SaveChanges();
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (gridView1.SelectedRowsCount > 0)
+            {
+                int[] selectedRowHandles = gridView1.GetSelectedRows();
+                foreach (int rowHandle in selectedRowHandles)
+                {
+                    if (rowHandle >= 0)
+                    {
+                        Product clientToDelete = gridView1.GetRow(rowHandle) as Product;
+
+                        dbContext.Products.Remove(clientToDelete);
+                    }
+                }
+
+                dbContext.SaveChanges();
+                LoadClients();
+            }
         }
     }
 }

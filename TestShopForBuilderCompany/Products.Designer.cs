@@ -1,8 +1,8 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
 
 namespace TestShopForBuilderCompany
 {
-    partial class Form2
+    partial class Products
     {
         /// <summary>
         /// Required designer variable.
@@ -33,44 +33,53 @@ namespace TestShopForBuilderCompany
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             saveBtn = new DevExpress.XtraEditors.SimpleButton();
+            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
             SuspendLayout();
             // 
             // gridControl1
             // 
-            gridControl1.Location = new System.Drawing.Point(118, 25);
+            gridControl1.Location = new System.Drawing.Point(21, 12);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new System.Drawing.Size(468, 314);
+            gridControl1.Size = new System.Drawing.Size(596, 356);
             gridControl1.TabIndex = 0;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
             // gridView1
             // 
-            gridView1.DetailHeight = 303;
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
-            gridView1.OptionsEditForm.PopupEditFormWidth = 686;
             // 
             // saveBtn
             // 
-            saveBtn.Location = new System.Drawing.Point(443, 345);
+            saveBtn.Location = new System.Drawing.Point(474, 374);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new System.Drawing.Size(143, 23);
-            saveBtn.TabIndex = 2;
+            saveBtn.TabIndex = 3;
             saveBtn.Text = "Сохранить изменения";
             saveBtn.Click += Save_Click;
             // 
-            // Form2
+            // simpleButton1
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            simpleButton1.Location = new System.Drawing.Point(21, 374);
+            simpleButton1.Name = "simpleButton1";
+            simpleButton1.Size = new System.Drawing.Size(110, 23);
+            simpleButton1.TabIndex = 4;
+            simpleButton1.Text = "Удалить товар";
+            simpleButton1.Click += btnDelete_Click;
+            // 
+            // Clients
+            // 
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(686, 390);
+            ClientSize = new System.Drawing.Size(639, 415);
+            Controls.Add(simpleButton1);
             Controls.Add(saveBtn);
             Controls.Add(gridControl1);
-            Name = "Form2";
-            Text = "Form2";
+            Name = "Products";
+            Text = "Products";
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
             ResumeLayout(false);
@@ -78,8 +87,10 @@ namespace TestShopForBuilderCompany
 
         #endregion
 
+
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SimpleButton saveBtn;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

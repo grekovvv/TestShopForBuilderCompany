@@ -9,28 +9,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using TestShopForBuilderCompany.Db;
 using TestShopForBuilderCompany.Model;
 
 namespace TestShopForBuilderCompany
 {
-    public partial class Form2 : DevExpress.XtraEditors.XtraForm
+    public partial class Clients : Form
     {
         private ShopSQL dbContext;
-        public Form2()
+        public Clients()
         {
             InitializeComponent();
             dbContext = new ShopSQL();
-            dbContext.Clients.Load();
-            gridControl1.DataSource = dbContext.Clients.Local.ToBindingList();
-            Load += Form1_Load;
+            Load += Clients_Load;
             gridView1.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
             gridView1.InitNewRow += GridView1_InitNewRow;
+            LoadClients();
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void LoadClients()
         {
-            // Makes the ID column read-only. Users cannnot edit its values.
+            dbContext.Clients.Load();
+            gridControl1.DataSource = dbContext.Clients.Local.ToBindingList();
+        }
+
+        private void Clients_Load(object sender, EventArgs e)
+        {
             gridView1.Columns["Id"].OptionsColumn.ReadOnly = true;
             gridView1.Columns["Id"].Visible = false;
         }
@@ -44,6 +47,25 @@ namespace TestShopForBuilderCompany
         private void Save_Click(object sender, EventArgs e)
         {
             dbContext.SaveChanges();
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (gridView1.SelectedRowsCount > 0)
+            {
+                int[] selectedRowHandles = gridView1.GetSelectedRows();
+                foreach (int rowHandle in selectedRowHandles)
+                {
+                    if (rowHandle >= 0)
+                    {
+                        Client clientToDelete = gridView1.GetRow(rowHandle) as Client;
+
+                        dbContext.Clients.Remove(clientToDelete);
+                    }
+                }
+
+                dbContext.SaveChanges();
+                LoadClients();
+            }
         }
     }
 }
