@@ -40,6 +40,7 @@ namespace TestShopForBuilderCompany
             gridView1.Columns["OrderDetails"].OptionsColumn.ReadOnly = true;
             gridView1.Columns["OrderDetails"].Visible = false;
         }
+
         private void GridView1_InitNewRow(object sender, InitNewRowEventArgs e)
         {
             GridView view = sender as GridView;

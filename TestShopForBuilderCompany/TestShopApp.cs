@@ -90,22 +90,22 @@ namespace TestShopForBuilderCompany
 
         private void accordionControlElement3_Click(object sender, EventArgs e)
         {
-            if (client == null)
+            if (formSales == null)
             {
-                client = new Clients();
+                formSales = new Sells();
             }
 
             var fluentContainer = this.fluentDesignFormContainer1;
 
-            client.TopLevel = false;
-            client.FormBorderStyle = FormBorderStyle.None;
-            client.Dock = DockStyle.Fill;
+            formSales.TopLevel = false;
+            formSales.FormBorderStyle = FormBorderStyle.None;
+            formSales.Dock = DockStyle.Fill;
 
             fluentContainer.Controls.Clear();
 
-            fluentContainer.Controls.Add(client);
+            fluentContainer.Controls.Add(formSales);
 
-            client.Show();
+            formSales.Show();
         }
 
         private void accordionControlElement4_Click(object sender, EventArgs e)
