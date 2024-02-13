@@ -16,7 +16,8 @@ Developed as a Windows Forms application using DevExpress version 23.2.4.0, Micr
 - Manage a catalog of products offered by the company, including the price per unit for each product.
 
 ### Sales Entry Form:
--Facilitate the entry of sales transactions.
+- Facilitate the entry of sales transactions.
+
 Users can:
 - Select a client from the client list.
 - Specify the date and time of the sale, with the option to default to the current date and time.
