@@ -1,7 +1,8 @@
 # TestShopForBuilderCompany
 
 How view program, see on youtube:
-<video src='[https://www.youtube.com/watch?v=4H3FcmZt8bE](youtube)' width=180/>
+<video src='https://www.youtube.com/watch?v=4H3FcmZt8bE' width=180/>
+https://www.youtube.com/watch?v=4H3FcmZt8bE
 
 ### Application Description
 
