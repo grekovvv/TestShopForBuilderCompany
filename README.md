@@ -2,9 +2,11 @@
 
 How view program, see on youtube:
 <video src='https://www.youtube.com/watch?v=4H3FcmZt8bE' width=180/>
-https://www.youtube.com/watch?v=4H3FcmZt8bE
+
 
 ### Application Description
+
+https://www.youtube.com/watch?v=4H3FcmZt8bE
 
 This mini-application serves as a customer service management tool designed to track services provided to clients and manage associated products. 
 Developed as a Windows Forms application using DevExpress version 23.2.4.0, Microsoft SQL Server, and Entity Framework Core, the application features the following functionalities:
