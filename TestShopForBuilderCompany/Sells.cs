@@ -52,7 +52,6 @@ namespace TestShopForBuilderCompany
         private void GridView1_InitNewRow(object sender, InitNewRowEventArgs e)
         {
             GridView view = sender as GridView;
-            //view.SetRowCellValue(e.RowHandle, view.Columns["ProductName"], "Имя");
             view.SetRowCellValue(e.RowHandle, view.Columns["Quantity"], 1);
             view.SetRowCellValue(e.RowHandle, view.Columns["DateInOrder"], DateTime.Now);
         }
@@ -68,11 +67,11 @@ namespace TestShopForBuilderCompany
             repositoryItemLookUpEdit.DataSource = products;
             repositoryItemLookUpEdit.ValueMember = "Id";
             repositoryItemLookUpEdit.DisplayMember = "Name";
-            //repositoryItemLookUpEdit.Columns["Id"].Visible = false;
-            //repositoryItemLookUpEdit.Columns["DateIn"].Visible = false;
+            repositoryItemLookUpEdit.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] { new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name") });
 
             gridView1.Columns["ProductId"].ColumnEdit = repositoryItemLookUpEdit;
             gridView1.Columns["ProductId"].ColumnEdit.NullText = "Выберите товар";
+            
         }
 
         private void lookUpEdit1_Validating(object sender, CancelEventArgs e)
@@ -91,54 +90,52 @@ namespace TestShopForBuilderCompany
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-
-            var client = lookUpEdit1.GetSelectedDataRow() as Client;
-            if(client == null)
+            try
             {
-                dxErrorProvider1.SetError(lookUpEdit1, "Выберите клиента");
-                return;
-            }
-
-
-            // Создаем новый заказ (Order)
-            Order order = new Order
-            {
-                // Например, заполняем поля заказа из формы или других источников данных
-                OrderDate = DateTime.Now,
-                CustomerId = client.Id, // Предполагаем, что выбранный клиент уже известен
-                Client = client                                 // Другие поля заказа, которые нужно заполнить
-            };
-
-            // Добавляем созданный заказ в DbContext и сохраняем его в базе данных
-            dbContext.Orders.Add(order);
-            dbContext.SaveChanges();
-
-            // Получаем идентификатор нового заказа
-            int newOrderId = order.Id;
-
-            // Получаем данные из GridView
-            var productOrders = (BindingList<ProductOrder>)gridControl1.DataSource;
-
-            // Создаем экземпляр OrderDetails на основе данных из GridView
-            foreach (var productOrder in productOrders)
-            {
-                var orderDetail = new OrderDetail
+                var client = lookUpEdit1.GetSelectedDataRow() as Client;
+                if (client == null)
                 {
-                    OrderId = newOrderId,
-                    ProductId = productOrder.ProductId,
-                    Quantity = productOrder.Quantity,
-                    Order = order,
-                    Product = dbContext.Products.Single(x => x.Id == productOrder.ProductId)
-                    // Другие свойства OrderDetail, которые нужно заполнить
+                    dxErrorProvider1.SetError(lookUpEdit1, "Выберите клиента");
+                    return;
+                }
+
+                Order order = new Order
+                {
+                    OrderDate = DateTime.Now,
+                    CustomerId = client.Id, 
+                    Client = client 
                 };
 
-                // Добавляем созданный экземпляр OrderDetail в DbContext
-                dbContext.OrderDetails.Add(orderDetail);
+                dbContext.Orders.Add(order);
+                dbContext.SaveChanges();
+
+                int newOrderId = order.Id;
+
+                var productOrders = (BindingList<ProductOrder>)gridControl1.DataSource;
+
+                foreach (var productOrder in productOrders)
+                {
+                    var orderDetail = new OrderDetail
+                    {
+                        OrderId = newOrderId,
+                        ProductId = productOrder.ProductId,
+                        Quantity = productOrder.Quantity,
+                        Order = order,
+                        Product = dbContext.Products.Single(x => x.Id == productOrder.ProductId)
+                    };
+
+                    dbContext.OrderDetails.Add(orderDetail);
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Произошла ошибка при сохранении данных: " + ex.Message);
+            }
+            
 
             try
             {
-                // Сохраняем изменения в базе данных
                 dbContext.SaveChanges();
                 MessageBox.Show("Данные успешно сохранены.");
                 LoadList();

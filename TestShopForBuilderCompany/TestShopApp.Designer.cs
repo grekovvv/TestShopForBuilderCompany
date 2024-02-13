@@ -36,6 +36,7 @@
             accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             ((System.ComponentModel.ISupportInitialize)fluentFormDefaultManager1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)accordionControl1).BeginInit();
@@ -47,7 +48,7 @@
             fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             fluentDesignFormContainer1.Location = new System.Drawing.Point(183, 31);
             fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            fluentDesignFormContainer1.Size = new System.Drawing.Size(690, 500);
+            fluentDesignFormContainer1.Size = new System.Drawing.Size(796, 500);
             fluentDesignFormContainer1.TabIndex = 0;
             // 
             // fluentFormDefaultManager1
@@ -57,7 +58,7 @@
             // accordionControl1
             // 
             accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { accordionControlElement1, accordionControlElement2, accordionControlElement3, accordionControlElement4 });
+            accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { accordionControlElement1, accordionControlElement2, accordionControlElement3, accordionControlElement4, accordionControlElement5 });
             accordionControl1.Location = new System.Drawing.Point(0, 31);
             accordionControl1.Name = "accordionControl1";
             accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
@@ -90,8 +91,15 @@
             // 
             accordionControlElement4.Name = "accordionControlElement4";
             accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            accordionControlElement4.Text = "Таблица продаж";
+            accordionControlElement4.Text = "Сводная таблица";
             accordionControlElement4.Click += accordionControlElement4_Click;
+            // 
+            // accordionControlElement5
+            // 
+            accordionControlElement5.Name = "accordionControlElement5";
+            accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            accordionControlElement5.Text = "Отчёт";
+            accordionControlElement5.Click += accordionControlElement5_Click;
             // 
             // fluentDesignFormControl1
             // 
@@ -99,7 +107,7 @@
             fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             fluentDesignFormControl1.Manager = fluentFormDefaultManager1;
             fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            fluentDesignFormControl1.Size = new System.Drawing.Size(873, 31);
+            fluentDesignFormControl1.Size = new System.Drawing.Size(979, 31);
             fluentDesignFormControl1.TabIndex = 2;
             fluentDesignFormControl1.TabStop = false;
             // 
@@ -107,7 +115,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(873, 531);
+            ClientSize = new System.Drawing.Size(979, 531);
             ControlContainer = fluentDesignFormContainer1;
             Controls.Add(fluentDesignFormContainer1);
             Controls.Add(accordionControl1);
@@ -115,7 +123,7 @@
             FluentDesignFormControl = fluentDesignFormControl1;
             Name = "TestShopApp";
             NavigationControl = accordionControl1;
-            Text = "Form1";
+            Text = "TestShopApp";
             ((System.ComponentModel.ISupportInitialize)fluentFormDefaultManager1).EndInit();
             ((System.ComponentModel.ISupportInitialize)accordionControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)fluentDesignFormControl1).EndInit();
@@ -131,6 +139,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
     }
 }
 

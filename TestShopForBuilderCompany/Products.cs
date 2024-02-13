@@ -44,13 +44,13 @@ namespace TestShopForBuilderCompany
         private void GridView1_InitNewRow(object sender, InitNewRowEventArgs e)
         {
             GridView view = sender as GridView;
-            view.SetRowCellValue(e.RowHandle, view.Columns["Name"], "Имя");
             view.SetRowCellValue(e.RowHandle, view.Columns["DateIn"], DateTime.Now);
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
             dbContext.SaveChanges();
+            MessageBox.Show("Данные успешно сохранены.");
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {

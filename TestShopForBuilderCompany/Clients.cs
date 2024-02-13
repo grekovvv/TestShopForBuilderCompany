@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,32 +41,45 @@ namespace TestShopForBuilderCompany
         private void GridView1_InitNewRow(object sender, InitNewRowEventArgs e)
         {
             GridView view = sender as GridView;
-            view.SetRowCellValue(e.RowHandle, view.Columns["Name"], "Имя");
             view.SetRowCellValue(e.RowHandle, view.Columns["DateIn"], DateTime.Now);
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
             dbContext.SaveChanges();
+            MessageBox.Show("Данные успешно сохранены.");
         }
+        //Примечание удалять клиентов, у которых есть заказы запрещено
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (gridView1.SelectedRowsCount > 0)
+            try
             {
-                int[] selectedRowHandles = gridView1.GetSelectedRows();
-                foreach (int rowHandle in selectedRowHandles)
+                if (gridView1.SelectedRowsCount > 0)
                 {
-                    if (rowHandle >= 0)
+                    int[] selectedRowHandles = gridView1.GetSelectedRows();
+                    foreach (int rowHandle in selectedRowHandles)
                     {
-                        Client clientToDelete = gridView1.GetRow(rowHandle) as Client;
-
-                        dbContext.Clients.Remove(clientToDelete);
+                        if (rowHandle >= 0)
+                        {
+                            Client clientToDelete = gridView1.GetRow(rowHandle) as Client;
+                            bool ordersToDelete = dbContext.Orders.Any(o => o.CustomerId == clientToDelete.Id);
+                            if (ordersToDelete)
+                            {
+                                MessageBox.Show("Удалять клиентов, у которых есть заказы запрещено");
+                            }
+                            dbContext.Clients.Remove(clientToDelete);
+                        }
                     }
-                }
 
-                dbContext.SaveChanges();
-                LoadClients();
+                    dbContext.SaveChanges();
+                    LoadClients();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: "+ ex.Message);
+            }
+            
         }
     }
 }

@@ -42,7 +42,7 @@
             // 
             // gridControl1
             // 
-            gridControl1.Location = new System.Drawing.Point(44, 52);
+            gridControl1.Location = new System.Drawing.Point(12, 38);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
             gridControl1.Size = new System.Drawing.Size(633, 332);
@@ -56,7 +56,7 @@
             // 
             // simpleButton1
             // 
-            simpleButton1.Location = new System.Drawing.Point(544, 390);
+            simpleButton1.Location = new System.Drawing.Point(512, 376);
             simpleButton1.Name = "simpleButton1";
             simpleButton1.Size = new System.Drawing.Size(133, 23);
             simpleButton1.TabIndex = 2;
@@ -65,9 +65,10 @@
             // 
             // lookUpEdit1
             // 
-            lookUpEdit1.Location = new System.Drawing.Point(44, 26);
+            lookUpEdit1.Location = new System.Drawing.Point(12, 12);
             lookUpEdit1.Name = "lookUpEdit1";
             lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] { new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name") });
             lookUpEdit1.Size = new System.Drawing.Size(207, 20);
             lookUpEdit1.TabIndex = 3;
             // 

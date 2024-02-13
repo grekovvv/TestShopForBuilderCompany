@@ -32,15 +32,15 @@ namespace TestShopForBuilderCompany
         {
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            saveBtn = new DevExpress.XtraEditors.SimpleButton();
-            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            saveBtn = new SimpleButton();
+            simpleButton1 = new SimpleButton();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
             SuspendLayout();
             // 
             // gridControl1
             // 
-            gridControl1.Location = new System.Drawing.Point(21, 12);
+            gridControl1.Location = new System.Drawing.Point(12, 12);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
             gridControl1.Size = new System.Drawing.Size(596, 356);
@@ -54,7 +54,7 @@ namespace TestShopForBuilderCompany
             // 
             // saveBtn
             // 
-            saveBtn.Location = new System.Drawing.Point(474, 374);
+            saveBtn.Location = new System.Drawing.Point(465, 374);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new System.Drawing.Size(143, 23);
             saveBtn.TabIndex = 3;
@@ -63,14 +63,14 @@ namespace TestShopForBuilderCompany
             // 
             // simpleButton1
             // 
-            simpleButton1.Location = new System.Drawing.Point(21, 374);
+            simpleButton1.Location = new System.Drawing.Point(12, 374);
             simpleButton1.Name = "simpleButton1";
             simpleButton1.Size = new System.Drawing.Size(110, 23);
             simpleButton1.TabIndex = 4;
             simpleButton1.Text = "Удалить товар";
             simpleButton1.Click += btnDelete_Click;
             // 
-            // Clients
+            // Products
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

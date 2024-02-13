@@ -38,7 +38,7 @@
             // 
             // gridControl1
             // 
-            gridControl1.Location = new System.Drawing.Point(21, 12);
+            gridControl1.Location = new System.Drawing.Point(12, 12);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
             gridControl1.Size = new System.Drawing.Size(596, 356);
@@ -52,7 +52,7 @@
             // 
             // saveBtn
             // 
-            saveBtn.Location = new System.Drawing.Point(474, 374);
+            saveBtn.Location = new System.Drawing.Point(465, 374);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new System.Drawing.Size(143, 23);
             saveBtn.TabIndex = 3;
@@ -61,7 +61,7 @@
             // 
             // simpleButton1
             // 
-            simpleButton1.Location = new System.Drawing.Point(21, 374);
+            simpleButton1.Location = new System.Drawing.Point(12, 374);
             simpleButton1.Name = "simpleButton1";
             simpleButton1.Size = new System.Drawing.Size(110, 23);
             simpleButton1.TabIndex = 4;

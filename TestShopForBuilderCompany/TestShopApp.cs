@@ -110,21 +110,40 @@ namespace TestShopForBuilderCompany
 
         private void accordionControlElement4_Click(object sender, EventArgs e)
         {
-            /*if (product == null)
+            if (tableSales == null)
             {
-                product = new Products();
+                tableSales = new Table();
             }
             var fluentContainer = this.fluentDesignFormContainer1;
 
-            product.TopLevel = false;
-            product.FormBorderStyle = FormBorderStyle.None;
-            product.Dock = DockStyle.Fill;
+            tableSales.TopLevel = false;
+            tableSales.FormBorderStyle = FormBorderStyle.None;
+            tableSales.Dock = DockStyle.Fill;
 
             fluentContainer.Controls.Clear();
 
-            fluentContainer.Controls.Add(product);
+            fluentContainer.Controls.Add(tableSales);
 
-            product.Show();*/
+            tableSales.Show();
+        }
+
+        private void accordionControlElement5_Click(object sender, EventArgs e)
+        {
+            if (report == null)
+            {
+                report = new Report();
+            }
+            var fluentContainer = this.fluentDesignFormContainer1;
+
+            report.TopLevel = false;
+            report.FormBorderStyle = FormBorderStyle.None;
+            report.Dock = DockStyle.Fill;
+
+            fluentContainer.Controls.Clear();
+
+            fluentContainer.Controls.Add(report);
+
+            report.Show();
         }
     }
 }
